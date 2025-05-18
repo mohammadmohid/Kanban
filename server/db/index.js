@@ -1,10 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 mongoose
-    .connect('mongodb+srv://benny:J4se6s8GBIyanNu2@cluster0.2wsfo.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true, })
-    .catch(e => {
-        console.error('Connection error', e.message);
-    });
+  .connect(
+    "mongodb+srv://admin:I2QDU7mPLyvuRR5n@kanban-cluster.dzwrwiu.mongodb.net/?retryWrites=true&w=majority&appName=kanban-cluster/test",
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .catch((e) => {
+    console.error("Connection error", e.message);
+  });
 
 const db = mongoose.connection;
 
