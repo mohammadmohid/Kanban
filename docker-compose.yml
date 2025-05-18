@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    container_name: kanban_mongo
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - kanban-ci-network
+
+  server:
+    build: ./server
+    container_name: kanban_server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/kanban
+    networks:
+      - kanban-ci-network
+
+  client:
+    build: ./client
+    container_name: kanban_client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    networks:
+      - kanban-ci-network
+
+volumes:
+  mongo-data:
+
+networks:
+  kanban-ci-network:
+    driver: bridge

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getToken = () => localStorage.getItem("jwtToken");
 export const API = axios.create({
-  baseURL: "http://localhost:1400/api",
+  baseURL: "http://44.211.255.199:5000/api",
   responseType: "json",
   headers: { Authorization: `${getToken()}` },
 });
