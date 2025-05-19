@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://mongo:27017/kanban", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://admin:12345678$$@kanban-cluster.dzwrwiu.mongodb.net/?retryWrites=true&w=majority&appName=kanban-cluster",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .catch((e) => {
     console.error("Connection error", e.message);
   });
